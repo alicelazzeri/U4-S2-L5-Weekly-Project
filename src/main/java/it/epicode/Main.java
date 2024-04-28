@@ -1,6 +1,7 @@
 package it.epicode;
 
 import it.epicode.classes.Book;
+import it.epicode.classes.CatalogueFileManager;
 import it.epicode.classes.CatalogueItem;
 import it.epicode.classes.Magazine;
 import it.epicode.exceptions.*;
@@ -11,7 +12,7 @@ import java.util.List;
 
 public class Main {
 
-    public static void main(String[] args) throws IOException {
+    public static void main(String[] args) {
 
         List<CatalogueItem> libraryCatalogue = new ArrayList<>();
 
@@ -90,7 +91,7 @@ public class Main {
                 System.out.println("Magazine: ISBN=" + magazine.getIsbnCode() +
                         ", Title '" + magazine.getTitle() +
                         "', Publishing Year: " + magazine.getPublishingYear() +
-                        ", Periodicità: " + magazine.getPeriodicita());
+                        ", Periodicità: " + magazine.getPeriodicity());
             }
         }
 
@@ -135,7 +136,7 @@ public class Main {
                 System.out.println("Magazine: ISBN=" + magazine.getIsbnCode() +
                         ", Title '" + magazine.getTitle() +
                         "', Publishing Year: " + magazine.getPublishingYear() +
-                        ", Periodicità: " + magazine.getPeriodicita());
+                        ", Periodicità: " + magazine.getPeriodicity());
             }
         }
 
@@ -224,17 +225,31 @@ public class Main {
             System.out.println("Nessun libro trovato dell'autore " + authorToSearch);
         }
 
+        // Creazione di un'istanza di CatalogueFileManager
 
+        CatalogueFileManager catalogueFileManager = new CatalogueFileManager();
+
+        // Salvataggio del catalogo su un file
+        String filePath = "catalogue.txt";
+        try {
+            catalogueFileManager.saveCatalogue(libraryCatalogue, filePath);
+            System.out.println("Catalogo salvato con successo.");
+        } catch (IOException e) {
+            System.err.println("Errore durante il salvataggio del catalogo: " + e.getMessage());
+        }
+
+        // Caricamento del catalogo da un file
+
+        List<CatalogueItem> loadedCatalogue;
+        try {
+            loadedCatalogue = catalogueFileManager.loadCatalogue(filePath);
+            System.out.println("Catalogo caricato con successo.");
+        } catch (IOException e) {
+            System.err.println("Errore durante il caricamento del catalogo: " + e.getMessage());
+            return;
+        }
 
     }
-
-
-
-
-
-
-
-
 
 
 

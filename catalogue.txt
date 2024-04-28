@@ -1,0 +1,24 @@
+Book {title: 'The Lord of the Rings - The Fellowship of the Ring', author: 'J.R.R. Tolkien', year: '1954', genre: 'Fantasy', nISBN code: '9783161484100'}
+Book {title: 'Harry Potter and the Philosopher's Stone', author: 'J.K. Rowling', year: '1997', genre: 'Fantasy', nISBN code: '9781408855652'}
+Book {title: 'Harry Potter and the Chamber of Secrets', author: 'J.K. Rowling', year: '1998', genre: 'Fantasy', nISBN code: '9781408828652'}
+Book {title: 'Harry Potter and the Prisoner of Azkaban', author: 'J.K. Rowling', year: '1999', genre: 'Fantasy', nISBN code: '9780439136365'}
+Book {title: 'Harry Potter and the Goblet of Fire', author: 'J.K. Rowling', year: '2000', genre: 'Fantasy', nISBN code: '9780439139595'}
+Book {title: 'Harry Potter and the Order of the Phoenix', author: 'J.K. Rowling', year: '2003', genre: 'Fantasy', nISBN code: '9780439358071'}
+Book {title: 'Harry Potter and the Half-Blood Prince', author: 'J.K. Rowling', year: '2005', genre: 'Fantasy', nISBN code: '9780439785969'}
+Book {title: 'Harry Potter and the Deathly Hallows', author: 'J.K. Rowling', year: '2007', genre: 'Fantasy', nISBN code: '9780545010221'}
+Book {title: 'The Lord of the Rings - The Two Towers', author: 'J.R.R. Tolkien', year: '1954', genre: 'Fantasy', nISBN code: '9780395489314'}
+Book {title: 'The Lord of the Rings - The Return of the King', author: 'J.R.R. Tolkien', year: '1955', genre: 'Fantasy', nISBN code: '9780395489307'}
+Book {title: 'Tess of the d'Urbervilles', author: 'Thomas Hardy', year: '1891', genre: 'Novel', nISBN code: '9781582872919'}
+Book {title: 'The Castle of Otranto', author: 'Horace Walpole', year: '1764', genre: 'Gothic Novel', nISBN code: '9781569786729'}
+Magazine {title: 'Vogue', year: '2024', periodicity: MENSILE', ISBN code: '9781419704406'}
+Magazine {title: 'National Geographic', year: '2023', periodicity: MENSILE', ISBN code: '9783161484100'}
+Magazine {title: 'Time', year: '2022', periodicity: SETTIMANALE', ISBN code: '9780321965516'}
+Magazine {title: 'The New Yorker', year: '2023', periodicity: MENSILE', ISBN code: '9780670020553'}
+Magazine {title: 'Science', year: '2024', periodicity: SEMESTRALE', ISBN code: '9780679641635'}
+Magazine {title: 'Nature', year: '2022', periodicity: MENSILE', ISBN code: '9780195153445'}
+Magazine {title: 'National Geographic Traveler', year: '2023', periodicity: MENSILE', ISBN code: '9781408128761'}
+Magazine {title: 'Harvard Business Review', year: '2024', periodicity: MENSILE', ISBN code: '9780749477500'}
+Magazine {title: 'Smithsonian', year: '2022', periodicity: MENSILE', ISBN code: '9781510726189'}
+Magazine {title: 'New Scientist', year: '2023', periodicity: SETTIMANALE', ISBN code: '9781546076572'}
+Magazine {title: 'Discover', year: '2024', periodicity: MENSILE', ISBN code: '9781785417693'}
+Magazine {title: 'Popular Science', year: '2023', periodicity: MENSILE', ISBN code: '9781734625182'}

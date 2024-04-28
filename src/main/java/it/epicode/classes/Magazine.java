@@ -7,10 +7,7 @@ import it.epicode.exceptions.ResearchPublishingYearException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Objects;
-import java.util.Optional;
+import java.util.*;
 import java.util.stream.Collectors;
 
 public class Magazine extends CatalogueItem {
@@ -33,17 +30,18 @@ public class Magazine extends CatalogueItem {
 
     // Costruttore
 
-    public Magazine (long isbnCode, String title, int publishingYear, Periodicity periodicity) {
+    public Magazine(long isbnCode, String title, int publishingYear, Periodicity periodicity) {
         super(isbnCode, title, publishingYear);
         this.periodicity = periodicity;
     }
 
     // Funzioni getter e setter
 
-    public Periodicity getPeriodicita() {
+    public Periodicity getPeriodicity() {
         return periodicity;
     }
-    public void setPeriodicita(Periodicity periodicity) {
+
+    public void setPeriodicity(Periodicity periodicity) {
         this.periodicity = periodicity;
     }
 
@@ -57,10 +55,10 @@ public class Magazine extends CatalogueItem {
                 Magazine newMagazine = new Magazine(item.getIsbnCode(),
                         item.getTitle(),
                         item.getPublishingYear(),
-                        ((Magazine) item).getPeriodicita()
+                        ((Magazine) item).getPeriodicity()
                 );
                 magazines.add(newMagazine);
-            }  else {
+            } else {
                 throw new AddItemException("Impossibile aggiungere l'elemento.");
             }
         } catch (AddItemException e) {
@@ -70,10 +68,10 @@ public class Magazine extends CatalogueItem {
     }
 
     @Override
-    public void removeItemByIsbn (long isbnCode) {
+    public void removeItemByIsbn(long isbnCode) {
         try {
             magazines.removeIf(magazine -> magazine.getIsbnCode() == isbnCode);
-        } catch(Exception e) {
+        } catch (Exception e) {
             logger.error("Errore durante la rimozione dell'elemento per ISBN: {}", e.getMessage());
             throw new RemoveItemException("Errore durante la rimozione dell'elemento per ISBN", e);
         }
@@ -85,7 +83,7 @@ public class Magazine extends CatalogueItem {
             Optional<CatalogueItem> researchIsbn = magazines.stream().filter(magazine -> magazine.getIsbnCode() == isbnCode)
                     .findFirst().map(m -> (CatalogueItem) m);
             return researchIsbn;
-        } catch(Exception e) {
+        } catch (Exception e) {
             logger.error("Errore durante la ricerca per ISBN: {}", e.getMessage());
             e.printStackTrace();
             throw new ResearchISBNException("Errore durante la ricerca per ISBN", e);
@@ -93,7 +91,7 @@ public class Magazine extends CatalogueItem {
     }
 
     @Override
-    public List<CatalogueItem> researchByPublishingYear (int publishingYear) {
+    public List<CatalogueItem> researchByPublishingYear(int publishingYear) {
         try {
             List<CatalogueItem> researchPublishingYear = magazines.stream()
                     .filter(magazine -> magazine.getPublishingYear() == publishingYear)
@@ -113,20 +111,24 @@ public class Magazine extends CatalogueItem {
         if (this == o) return true;
         if (!(o instanceof Magazine magazine)) return false;
         if (!super.equals(o)) return false;
-        return getPeriodicita() == magazine.getPeriodicita();
+        return getPeriodicity() == magazine.getPeriodicity();
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(super.hashCode(), getPeriodicita());
+        return Objects.hash(super.hashCode(), getPeriodicity());
     }
 
     // Override del metodo toString()
 
+
     @Override
     public String toString() {
-        return "Magazine{" +
-                "periodicity=" + periodicity +
+        return "Magazine {" +
+                "title: '" + getTitle() + '\'' +
+                ", year: '" + getPublishingYear() + '\'' +
+                ", periodicity: " + periodicity + "\'" +
+                ", ISBN code: '" + getIsbnCode() + '\'' +
                 '}';
     }
 }

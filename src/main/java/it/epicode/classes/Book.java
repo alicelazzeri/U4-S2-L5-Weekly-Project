@@ -133,11 +133,17 @@ public class Book extends CatalogueItem {
     }
 
     // Override del metodo toString()
+
     @Override
     public String toString() {
-        return "Book{" +
-                "author='" + author + '\'' +
-                ", genre='" + genre + '\'' +
+        return "Book {" +
+                "title: '" + getTitle() + '\'' +
+                ", author: '" + author + '\'' +
+                ", year: '" + getPublishingYear() + '\'' +
+                ", genre: '" + genre + '\'' +
+                ", nISBN code: '" + getIsbnCode() + '\'' +
                 '}';
     }
+
+
 }
