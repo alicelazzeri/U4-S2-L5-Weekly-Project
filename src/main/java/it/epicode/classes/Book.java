@@ -13,15 +13,14 @@ import java.util.stream.Collectors;
 public class Book extends CatalogueItem {
 
     // Creazione di una variabile logger per la gestione delle eccezioni con LogBack e slf4j
-
     private static final Logger logger = LoggerFactory.getLogger(Book.class);
 
+    // Attributi aggiuntivi specifici della classe Book
     private String author;
     private String genre;
     private List<Book> books = new ArrayList<>();
 
     // Costruttore
-
     public Book(long isbnCode, String title, int publishingYear, String author, String genre) {
         super(isbnCode, title, publishingYear);
         this.author = author;
@@ -29,7 +28,6 @@ public class Book extends CatalogueItem {
     }
 
     // Funzioni getter e setter
-
     public String getAuthor() {
         return author;
     }
@@ -44,9 +42,7 @@ public class Book extends CatalogueItem {
         this.genre = genre;
     }
 
-    // Creazione del metodo researchByAuthor, proprio solo
-    // della classe Book, essendo author uno dei suoi attrinuti
-    // non ereditati da CatalogueItem
+    // Metodo researchByAuthor: ricerca libri per autore
 
     public List<CatalogueItem> researchByAuthor(String author) {
         try {
@@ -61,8 +57,7 @@ public class Book extends CatalogueItem {
         }
     }
 
-    // Override dei metodi astratti definiti in CatalogueItem con implementazione
-    // di blocchi try/catch per agevolare la gestione di possibili eccezioni
+    // Override dei metodi astratti definiti in CatalogueItem con implementazione di blocchi try/catch per agevolare la gestione di possibili eccezioni
 
     @Override
     public void addItem(CatalogueItem item) {
@@ -75,7 +70,7 @@ public class Book extends CatalogueItem {
                         ((Book) item).getGenre()
                 );
                 books.add(newBook);
-            } else {
+            }  else {
                 throw new AddItemException("Impossibile aggiungere l'elemento.");
             }
         } catch (AddItemException e) {
@@ -104,6 +99,7 @@ public class Book extends CatalogueItem {
             return researchIsbn;
         } catch (Exception e) {
             logger.error("Errore durante la ricerca per ISBN: {}", e.getMessage());
+            e.printStackTrace();
             throw new ResearchISBNException("Errore durante la ricerca per ISBN", e);
         }
     }
@@ -123,7 +119,6 @@ public class Book extends CatalogueItem {
     }
 
     // Override dei metodi equals() e hashCode()
-
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -138,7 +133,6 @@ public class Book extends CatalogueItem {
     }
 
     // Override del metodo toString()
-
     @Override
     public String toString() {
         return "Book{" +

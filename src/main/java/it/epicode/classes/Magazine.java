@@ -17,7 +17,7 @@ public class Magazine extends CatalogueItem {
 
     // Creazione di un Enum per gestire le caratteristiche dell'oggetto Rivista
 
-    public enum Periodicita {
+    public enum Periodicity {
         SETTIMANALE,
         MENSILE,
         SEMESTRALE
@@ -28,23 +28,23 @@ public class Magazine extends CatalogueItem {
     private static final Logger logger = LoggerFactory.getLogger(Magazine.class);
 
 
-    private Periodicita periodicita;
+    private Periodicity periodicity;
     private List<Magazine> magazines = new ArrayList<>();
 
     // Costruttore
 
-    public Magazine (long isbnCode, String title, int publishingYear, Periodicita periodicita) {
+    public Magazine (long isbnCode, String title, int publishingYear, Periodicity periodicity) {
         super(isbnCode, title, publishingYear);
-        this.periodicita = periodicita;
+        this.periodicity = periodicity;
     }
 
     // Funzioni getter e setter
 
-    public Periodicita getPeriodicita() {
-        return periodicita;
+    public Periodicity getPeriodicita() {
+        return periodicity;
     }
-    public void setPeriodicita(Periodicita periodicita) {
-        this.periodicita = periodicita;
+    public void setPeriodicita(Periodicity periodicity) {
+        this.periodicity = periodicity;
     }
 
     // Override dei metodi astratti definiti in CatalogueItem con implementazione
@@ -87,6 +87,7 @@ public class Magazine extends CatalogueItem {
             return researchIsbn;
         } catch(Exception e) {
             logger.error("Errore durante la ricerca per ISBN: {}", e.getMessage());
+            e.printStackTrace();
             throw new ResearchISBNException("Errore durante la ricerca per ISBN", e);
         }
     }
@@ -125,7 +126,7 @@ public class Magazine extends CatalogueItem {
     @Override
     public String toString() {
         return "Magazine{" +
-                "periodicita=" + periodicita +
+                "periodicity=" + periodicity +
                 '}';
     }
 }
