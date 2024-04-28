@@ -1,6 +1,8 @@
 package it.epicode.classes;
 
+import java.util.List;
 import java.util.Objects;
+import java.util.Optional;
 
 public abstract class CatalogueItem {
     private long isbnCode;
@@ -42,6 +44,10 @@ public abstract class CatalogueItem {
     // in base al codice ISBN e di ricerca per ISBN o per anno di pubblicazione,
     // che verranno poi implementati e "overridden" nelle singole classi concrete
 
+    public abstract void addItem(CatalogueItem item);
+    public abstract void removeItemByIsbn(long isbnCode);
+    public abstract Optional<CatalogueItem> researchByIsbn(long isbnCode);
+    public abstract List<CatalogueItem> researchByPublishingYear(int publishingYear);
 
     // Override dei metodi equals() e hashCode()
 
